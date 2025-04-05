@@ -41,7 +41,7 @@ void	error(char **nbs, t_stack **a)
 	write(2, "Error\n", 6);
 	free_strs(nbs);
 	free_stack(a);
-	exit(0);
+	exit(1);
 }
 void	parsing(int ac, char **av, t_stack **a)
 {
@@ -55,7 +55,7 @@ void	parsing(int ac, char **av, t_stack **a)
 	{
 		j = 0;
 		nbs = ft_split(av[i]);
-		if (check_number(nbs) && check_input(av[i]))
+		if (nbs && check_number(nbs) && check_input(av[i]))
 		{
 			while (nbs[j])
 				ft_lstaddback(&(*a), ft_atoi(nbs[j++]));

@@ -43,6 +43,11 @@ char **ft_split(char *str)
 
 	i = 0;
 	m = (char **)malloc(sizeof(char *) * (words(str) + 1));
+	if (words(str) == 0)
+	{
+		free(m);
+		return (NULL);
+	}
 	while (*str)
 	{
 		len = 0;
@@ -76,6 +81,8 @@ long	ft_atoi(char *str)
 	{
 		res *= 10;
 		res += *str - 48;
+		if (res * sign > 2147483647 || res * sign < -2147483648)
+			return (2147483648);
 		str++;
 	}
 	return (res * sign);

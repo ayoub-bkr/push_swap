@@ -37,22 +37,22 @@ int main(int ac, char **av)
 	parsing(ac, av, &a);
 	// op_p(&a, &b);
 	// op_rr(&a);
-	i = 0;
-	t_stack *tmp = a;
-	while(tmp)
-	{
-		printf("%d\n", tmp->data);
-		tmp = tmp->next;
-	}
-	printf("----\n");
-	// op_s(&a);
-	i = 0;
-	tmp = b;
-	while(tmp)
-	{
-		printf("%d\n", tmp->data);
-		tmp = tmp->next;
-	}
+	// i = 0;
+	// t_stack *tmp = a;
+	// while(tmp)
+	// {
+	// 	printf("%d\n", tmp->data);
+	// 	tmp = tmp->next;
+	// }
+	// printf("----\n");
+	// // op_s(&a);
+	// i = 0;
+	// tmp = b;
+	// while(tmp)
+	// {
+	// 	printf("%d\n", tmp->data);
+	// 	tmp = tmp->next;
+	// }
 	free_stack(&a);
 	free_stack(&b);
 }
