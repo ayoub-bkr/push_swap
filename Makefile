@@ -1,4 +1,4 @@
-SRC = main.c utils.c linked_lists.c
+SRC = main.c utils.c linked_lists.c operations.c parsing.c
 
 OBJ = $(SRC:.c=.o)
 
