@@ -1,20 +1,16 @@
-CC = cc
-
 SRC = main.c utils.c linked_lists.c
 
 OBJ = $(SRC:.c=.o)
 
-FLAGS = -Wall -Werror -Wextra
-
 NAME = push_swap
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	cc -Wall -Werror -Wextra $(OBJ) -o $(NAME)
 
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	cc -Wall -Werror -Wextra -c $< -o $@
 clean:
 	rm -f $(OBJ)
 fclean: clean

@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "push_swap.h"
 
 static int words(char *str)
 {
@@ -59,9 +59,9 @@ char **ft_split(char *str)
 	return (m);
 }
 
-int ft_atoi(char *str)
+long	ft_atoi(char *str)
 {
-	int	res;
+	long	res;
 	int	sign;
 
 	res = 0;
@@ -80,26 +80,3 @@ int ft_atoi(char *str)
 	}
 	return (res * sign);
 }
-
-// #include <stdio.h>
-// int main(int ac, char **av)
-// {
-//     // char *str = av[1];
-//     // // char *sub = ft_substr(str, 1, 3);
-    
-//     // char **tmp = strs;
-//     // while (*strs)
-//     // {
-//     //     printf("%s\n", *strs);
-//     //     free(*strs);
-//     //     strs++;
-//     // }
-//     // free(tmp);
-	
-// 	int i = 0;
-// 	char **strs = ft_split(av[1]);
-// 	while (strs[i])
-// 	{
-// 		printf("%d\n", ft_atoi(strs[i++]));
-// 	}
-// }
