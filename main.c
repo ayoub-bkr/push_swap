@@ -23,16 +23,29 @@ int	check_input(char *str)
 	return (1);
 }
 
-void	freeing(t_stack **a)
+void	free_stack(t_stack **a)
 {
+	t_stack	*tmp;
 	if (!*a || !a)
 		return ;
-	while (*a)
+	tmp = *a;
+	while (tmp)
 	{
-		free(*a);
-		a++;
+		(*a) = (*a)->next;
+		free(tmp);
+		tmp = *a;
 	}
-	free(a);
+}
+void	free_strs(char **str)
+{
+	int i;
+
+	if (!str || !*str)
+		return ;
+	i = 0;
+	while(str[i])
+		free(str[i++]);
+	free(str);
 }
 
 int main(int ac, char **av)
@@ -41,29 +54,43 @@ int main(int ac, char **av)
 	int		j;
 	char	**nbs;
 	t_stack	*a;
+	t_stack	*b;
 
 	i = 1;
-	j = 0;
 	a = NULL;
+	b = NULL;
 	while (i < ac)
 	{
+		j = 0;
 		if (!check_input(av[i]))
-			write(1, "Error", 5);
+		{
+			write(2, "Invalid Input!", 14);
+			exit(0);
+		}
 		nbs = ft_split(av[i]);
 		while (nbs[j])
 			ft_lstaddback(&a, ft_atoi(nbs[j++]));
 		i++;
+		free_strs(nbs);
 	}
+	// op_p(&a, &b);
+	op_rr(&a);
 	i = 0;
-	while (nbs[i])
-		free(nbs[i++]);
-	free(nbs);
 	t_stack *tmp = a;
 	while(tmp)
 	{
 		printf("%d\n", tmp->data);
 		tmp = tmp->next;
 	}
-	freeing(&a);
+	printf("----\n");
+	// op_s(&a);
+	i = 0;
+	tmp = b;
+	while(tmp)
+	{
+		printf("%d\n", tmp->data);
+		tmp = tmp->next;
+	}
+	free_stack(&a);
+	free_stack(&b);
 }
-
