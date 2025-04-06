@@ -25,6 +25,36 @@ void	free_strs(char **str)
 	free(str);
 }
 
+int count(t_stack *a)
+{
+	int i;
+
+	i = 0;
+	while (a)
+	{
+		a = a->next;
+		i++;
+	}
+	return (i);
+}
+void	sa(t_stack **a)
+{
+	op_s(a);
+	write(1, "sa", 2);
+}
+void	sorting(t_stack *a, t_stack *b)
+{
+	int s1;
+	int s2;
+	if (count(a) == 2 || !b)
+	{
+		s1 = a->data;
+		a = a->next;
+		s2 = a->data;
+		if (s1 > s2)
+			sa(&a);
+	}
+}
 int main(int ac, char **av)
 {
 	int		i;	
@@ -35,6 +65,7 @@ int main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	parsing(ac, av, &a);
+	sorting(a, b);
 	// op_p(&a, &b);
 	// op_rr(&a);
 	// i = 0;
