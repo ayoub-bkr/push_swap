@@ -37,24 +37,97 @@ int count(t_stack *a)
 	}
 	return (i);
 }
-void	sa(t_stack **a)
+void	sort_3(t_stack *a)
 {
-	op_s(a);
-	write(1, "sa", 2);
+	if (a->data < a->next->data && a->next->data > a->next->next->data)
+		rra(&a);
+	else if (a->data > a->next->data && a->data > a->next->next->data)
+		ra(&a);
+	if ((a->next->next->data > a->data && a->data > a->next->data))
+		sa(&a);
+}
+int	find_min(t_stack *a)
+{
+	int		i;
+	int		j;
+	int		nb;
+	t_stack	*tmp;
+
+	i = 0;
+	j = 0;
+	tmp = a;
+	nb = a->data;
+	while (tmp)
+	{
+		if (nb > tmp->data)
+		{
+			nb = tmp->data;
+			i = j;
+		}
+		j++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+void	sort_4(t_stack *a, t_stack *b)
+{
+	int i;
+
+	i = find_min(a);
+	if (i == 3)
+		rra(&a);
+	else if (i == 1)
+		ra(&a);
+	else if (i == 2)
+	{
+		ra(&a);
+		ra(&a);
+	}
+	pb(&a, &b);
+	sort_3(a);
+	pa(&a, &b);
+}
+void	sort_5(t_stack *a, t_stack *b)
+{
+	int i;
+
+	i = find_min(a);
+	if (i == 1)
+		ra(&a);
+	else if (i == 2)
+	{
+		ra(&a);
+		ra(&a);
+	}
+	if (i == 3)
+	{
+		rra(&a);
+		rra(&a);
+	}
+	else if (i == 4)
+		rra(&a);
+	if (i > 0)
+	{
+		pb(&a, &b);
+		sort_4(a, b);
+		pa(&a, &b);
+	}
 }
 void	sorting(t_stack *a, t_stack *b)
 {
-	int s1;
-	int s2;
-	if (count(a) == 2 || !b)
+	if (count(a) == 2)
 	{
-		s1 = a->data;
-		a = a->next;
-		s2 = a->data;
-		if (s1 > s2)
+		if (a->data > a->next->data)
 			sa(&a);
 	}
+	else if (count(a) == 3)
+		sort_3(a);
+	else if (count(a) == 4)
+		sort_4(a, b);
+	else if (count(a) == 5)
+		sort_5(a, b);
 }
+
 int main(int ac, char **av)
 {
 	int		i;	
@@ -65,9 +138,11 @@ int main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	parsing(ac, av, &a);
-	sorting(a, b);
-	// op_p(&a, &b);
-	// op_rr(&a);
+	// pb(&a, &b);pb(&a, &b);pb(&a, &b);
+	// sa(&a);sb(&b);ss(&a, &b);
+	// ra(&a);rb(&b);rr(&a, &b);
+	// rra(&a);rrb(&b);rrr(&a, &b);
+	// printf("----\n");
 	// i = 0;
 	// t_stack *tmp = a;
 	// while(tmp)
@@ -76,7 +151,15 @@ int main(int ac, char **av)
 	// 	tmp = tmp->next;
 	// }
 	// printf("----\n");
-	// // op_s(&a);
+	sorting(a, b);
+	// printf("----\n");
+	// i = 0;
+	// tmp = a;
+	// while(tmp)
+	// {
+	// 	printf("%d\n", tmp->data);
+	// 	tmp = tmp->next;
+	// }
 	// i = 0;
 	// tmp = b;
 	// while(tmp)

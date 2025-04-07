@@ -27,26 +27,3 @@ void	ft_lstaddback(t_stack **head, int new)
 	m->data = new;
 	m->next = NULL;
 }
-// #include <stdio.h>
-// #include <stdlib.h>
-// int main()
-// {
-// 	t_stack *node1, node2, node3;
-// 	node1 = malloc(sizeof(t_stack));
-// 	node1->next = &node2;
-// 	node2.next = &node3;
-// 	node3.next = NULL;
-	
-// 	node1->data = 1;
-// 	node2.data = 2;
-// 	node3.data = 3;
-
-// 	ft_lstaddback(&node1, 40);
-// 	t_stack *tmp;
-// 	tmp = node1;
-// 	while (tmp)
-// 	{
-// 		printf("%d\n", tmp->data);
-// 		tmp = tmp->next;
-// 	}
-// }

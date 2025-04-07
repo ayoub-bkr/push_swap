@@ -26,6 +26,7 @@ int	check_input(char *str)
 int	check_number(char **nbs)
 {
 	int	i;
+	// int j;
 
 	i = 0;
 	while (nbs[i])
@@ -43,6 +44,27 @@ void	error(char **nbs, t_stack **a)
 	free_stack(a);
 	exit(1);
 }
+
+void	check_double(t_stack *a, char **nbs)
+{
+	t_stack	*tmp;
+	t_stack	*sec;
+
+	tmp = a;
+	sec = a->next;
+	while (tmp)
+	{
+		sec = tmp->next;
+		while (sec)
+		{
+			if (tmp->data == sec->data)
+				error(nbs, &a);
+			sec = sec->next;
+		}
+		tmp = tmp->next;
+	}
+}
+
 void	parsing(int ac, char **av, t_stack **a)
 {
 	int		i;
@@ -62,6 +84,7 @@ void	parsing(int ac, char **av, t_stack **a)
 		}
 		else
 			error(nbs, a);
+		check_double(*a, nbs);
 		i++;
 		free_strs(nbs);
 	}
