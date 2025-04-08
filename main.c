@@ -144,21 +144,49 @@ int	best_position(t_stack *a, int nb)
 	}
 	return (i);
 }
-void	indexing(t_stack *a)
+void	indexing(t_stack **a, t_stack **b)
 {
-	int	array[count(a) + 1];
+	int i;
+	int min;
+	int	max;
+	int	sorted[count(*a) + 1];
 	t_stack	*tmp;
 
-	tmp = a;
+	tmp = *a;
 	while (tmp)
 	{
-		// printf("%d | %d\n", best_position(a, tmp->data), tmp->data);
-		array[best_position(a, tmp->data)] = tmp->data;
+		sorted[best_position(*a, tmp->data)] = tmp->data;
 		tmp = tmp->next;
 	}
-	int i = 0;
-	while (i < 12)
-		printf("%d\n", array[i++]);
+	i = 0;
+	min = 0;
+	max = count(*a) / 6;
+	// printf("%d\n", a->data);
+	// ra(&a);
+	// pb(a, b);
+	// pb(a, b);
+	// rb(&b);
+	// printf("%d\n", a->data);
+	if ((*a)->next)
+	{
+		if ((*a)->data <= sorted[min])
+		{
+			pb(a, b);
+			rb(b);
+			min++;
+			max++;
+		}
+		else if ((*a)->data <= sorted[max])
+		{
+			pb(a, b);
+			if ((*b)->data < (*b)->next->data)
+				sb(b);
+			min++;
+			max++;
+		}
+		else
+			ra(a);
+	}
 }
 int main(int ac, char **av)
 {
@@ -170,36 +198,37 @@ int main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	parsing(ac, av, &a);
-	indexing(a);
+	// indexing(a, b);
 	// pb(&a, &b);pb(&a, &b);pb(&a, &b);
 	// sa(&a);sb(&b);ss(&a, &b);
 	// ra(&a);rb(&b);rr(&a, &b);
 	// rra(&a);rrb(&b);rrr(&a, &b);
 	// printf("----\n");
 	// i = 0;
-	// t_stack *tmp = a;
+	t_stack *tmp = a;
 	// while(tmp)
 	// {
 	// 	printf("%d\n", tmp->data);
 	// 	tmp = tmp->next;
 	// }
-	// printf("----\n");
+	indexing(&a, &b);
 	// sorting(a, b);
-	// printf("----\n");
-	// i = 0;
-	// tmp = a;
-	// while(tmp)
-	// {
-	// 	printf("%d\n", tmp->data);
-	// 	tmp = tmp->next;
-	// }
-	// i = 0;
-	// tmp = b;
-	// while(tmp)
-	// {
-	// 	printf("%d\n", tmp->data);
-	// 	tmp = tmp->next;
-	// }
+	printf("----\n");
+	i = 0;
+	tmp = a;
+	while(tmp)
+	{
+		printf("%d\n", tmp->data);
+		tmp = tmp->next;
+	}
+	printf("----\n");
+	i = 0;
+	tmp = b;
+	while(tmp)
+	{
+		printf("%d\n", tmp->data);
+		tmp = tmp->next;
+	}
 	free_stack(&a);
 	free_stack(&b);
 }
