@@ -1,13 +1,16 @@
 #include "push_swap.h"
 
-t_stack *ft_lstnew(int data)
+int ft_lstsize(t_stack *a)
 {
-	t_stack *m;
+	int i;
 
-	m = (t_stack *)malloc(sizeof(t_stack));
-	m->data = data;
-	m->next = NULL;
-	return (m);
+	i = 0;
+	while (a)
+	{
+		a = a->next;
+		i++;
+	}
+	return (i);
 }
 
 void	ft_lstaddback(t_stack **head, int new)

@@ -1,4 +1,4 @@
-SRC = linked_lists.c main.c op_push_rotate.c op_rrotate.c op_swap.c parsing.c utils.c
+SRC = linked_lists.c main.c op_push_rotate.c op_swap_rrotate.c parsing.c utils.c
 
 OBJ = $(SRC:.c=.o)
 

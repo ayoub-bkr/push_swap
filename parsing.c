@@ -37,13 +37,6 @@ int	check_number(char **nbs)
 	}
 	return (1);
 }
-void	error(char **nbs, t_stack **a)
-{
-	write(2, "Error\n", 6);
-	free_strs(nbs);
-	free_stack(a);
-	exit(1);
-}
 
 void	check_double(t_stack *a, char **nbs)
 {

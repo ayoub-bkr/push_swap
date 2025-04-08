@@ -10,7 +10,7 @@ typedef struct s_list {
 } t_stack;
 
 //linked_lists.c
-t_stack	*ft_lstnew(int data);
+int		ft_lstsize(t_stack *a);
 void	ft_lstaddback(t_stack **head, int new);
 
 //main.c
@@ -25,21 +25,30 @@ void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
 
-//op_rrotate.c
+//op_swap_rrotate.c
+void	sa(t_stack **a);
+void	sb(t_stack **b);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
-
-//op_swap.c
-void	sa(t_stack **a);
-void	sb(t_stack **a);
-void	ss(t_stack **a, t_stack **b);
 
 //parsing.c
 int		ft_isdigit(char c);
 int		check_input(char *str);
 int		check_number(char **nbs);
+void	check_double(t_stack *a, char **nbs);
 void	parsing(int ac, char **av, t_stack **a);
+
+//sorting_utils.c
+int	best_position(t_stack *a, int nb);
+int	find_max(t_stack *b);
+int	find_min(t_stack *a);
+
+//sorting.c
+void	sort_3(t_stack *a);
+void	push_to_b(t_stack **a, t_stack **b);
+void	sort_big(t_stack **a, t_stack **b, int size, int chunk);
+void	sorting(t_stack *a, t_stack *b, int size);
 
 //utils.c
 char	**ft_split(char *str);
