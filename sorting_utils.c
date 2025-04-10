@@ -65,3 +65,23 @@ int	find_min(t_stack *a)
 	}
 	return (i);
 }
+
+void	sort_small(t_stack **a, t_stack **b)
+{
+	int	mid;
+	int	pos;
+	while (*a)
+	{
+		mid = ft_lstsize(*a) / 2;
+		pos = find_min(*a);
+		if (pos <= mid)
+			while(pos-- > 0)
+				ra(a);
+		else
+			while(pos++ < ft_lstsize(*a))
+				rra(a);
+		pb(a, b);
+	}
+	while (*b)
+		pa(a, b);
+}

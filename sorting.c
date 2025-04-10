@@ -220,6 +220,8 @@ void	sorting(t_stack *a, t_stack *b, int size)
 	}
 	else if (size == 3)
 		sort_3(a);
+	else if (size < 10)
+		sort_small(&a, &b);
 	else
 		sort_big(&a, &b, size, chunk);
 		// chunks_sorting(&a, &b);

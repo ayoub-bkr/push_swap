@@ -43,6 +43,7 @@ void	parsing(int ac, char **av, t_stack **a);
 int	best_position(t_stack *a, int nb);
 int	find_max(t_stack *b);
 int	find_min(t_stack *a);
+void	sort_small(t_stack **a, t_stack **b);
 
 //sorting.c
 void	sort_3(t_stack *a);
