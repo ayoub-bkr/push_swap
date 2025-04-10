@@ -13,6 +13,7 @@ void	free_stack(t_stack **a)
 		tmp = *a;
 	}
 }
+
 void	free_strs(char **str)
 {
 	int i;
@@ -33,49 +34,18 @@ void	error(char **nbs, t_stack **a)
 	exit(1);
 }
 
-void	sort_4(t_stack *a, t_stack *b)
+int	already_sorted(t_stack *a)
 {
-	int i;
+	t_stack	*tmp;
 
-	i = find_min(a);
-	if (i == 3)
-		rra(&a);
-	else if (i == 1)
-		ra(&a);
-	else if (i == 2)
+	tmp = a;
+	while (tmp->next)
 	{
-		ra(&a);
-		ra(&a);
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
 	}
-	pb(&a, &b);
-	sort_3(a);
-	pa(&a, &b);
-}
-void	sort_5(t_stack *a, t_stack *b)
-{
-	int i;
-
-	i = find_min(a);
-	if (i == 1)
-		ra(&a);
-	else if (i == 2)
-	{
-		ra(&a);
-		ra(&a);
-	}
-	if (i == 3)
-	{
-		rra(&a);
-		rra(&a);
-	}
-	else if (i == 4)
-		rra(&a);
-	if (i > 0)
-	{
-		pb(&a, &b);
-		sort_4(a, b);
-		pa(&a, &b);
-	}
+	return (1);
 }
 
 int main(int ac, char **av)
@@ -90,15 +60,10 @@ int main(int ac, char **av)
 	b = NULL;
 	parsing(ac, av, &a);
 	size = ft_lstsize(a);
-	
-	// i = 0;
+	if (ac >= 2 && !already_sorted(a))
+		sorting(a, b, size);
+
 	// t_stack *tmp = a;
-	// while(tmp)
-	// {
-	// 	printf("%d\n", tmp->data);
-	// 	tmp = tmp->next;
-	// }
-	sorting(a, b, size);
 	// printf("----\n");
 	// i = 0;
 	// tmp = a;
@@ -107,8 +72,8 @@ int main(int ac, char **av)
 	// 	printf("%d\n", tmp->data);
 	// 	tmp = tmp->next;
 	// }
+
 	// printf("----\n");
-	// i = 0;
 	// tmp = b;
 	// while(tmp)
 	// {

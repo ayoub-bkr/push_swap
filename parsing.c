@@ -26,7 +26,6 @@ int	check_input(char *str)
 int	check_number(char **nbs)
 {
 	int	i;
-	// int j;
 
 	i = 0;
 	while (nbs[i])

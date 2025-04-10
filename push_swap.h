@@ -46,9 +46,14 @@ int	find_min(t_stack *a);
 
 //sorting.c
 void	sort_3(t_stack *a);
-void	push_to_b(t_stack **a, t_stack **b);
+void	push_to_a(t_stack **a, t_stack **b);
 void	sort_big(t_stack **a, t_stack **b, int size, int chunk);
 void	sorting(t_stack *a, t_stack *b, int size);
+
+void	push_to_stb(t_stack **sta, t_stack **stb, int min, int max);
+void	chunks_sorting(t_stack **sta, t_stack **stb);
+void	push_back_sta(t_stack	**sta, t_stack	**stb);
+int		max_pos(t_stack *stb);
 
 //utils.c
 char	**ft_split(char *str);

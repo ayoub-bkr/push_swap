@@ -51,6 +51,8 @@ void	rb(t_stack **b)
 	t_stack	*lst;
 	t_stack	*sec;
 
+	if (!(*b) || !(*b)->next)
+		return ;
 	lst = *b;
 	sec = (*b)->next;
 	while (sec)

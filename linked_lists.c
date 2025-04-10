@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-int ft_lstsize(t_stack *a)
+int	ft_lstsize(t_stack *a)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (a)
@@ -15,7 +15,8 @@ int ft_lstsize(t_stack *a)
 
 void	ft_lstaddback(t_stack **head, int new)
 {
-	t_stack *m;
+	t_stack	*m;
+
 	m = malloc(sizeof(t_stack));
 	if (!m)
 		return ;
@@ -23,7 +24,7 @@ void	ft_lstaddback(t_stack **head, int new)
 		*head = m;
 	else
 	{
-		while((*head)->next)
+		while ((*head)->next)
 			head = &(*head)->next;
 		(*head)->next = m;
 	}
