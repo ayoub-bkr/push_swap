@@ -70,7 +70,7 @@ void	sort_small(t_stack **a, t_stack **b)
 {
 	int	mid;
 	int	pos;
-	while (*a)
+	while (ft_lstsize(*a) > 3)
 	{
 		mid = ft_lstsize(*a) / 2;
 		pos = find_min(*a);
@@ -82,6 +82,7 @@ void	sort_small(t_stack **a, t_stack **b)
 				rra(a);
 		pb(a, b);
 	}
+	sort_3(*a);
 	while (*b)
 		pa(a, b);
 }

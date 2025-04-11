@@ -9,6 +9,7 @@ void	sort_3(t_stack *a)
 	if ((a->next->next->data > a->data && a->data > a->next->data))
 		sa(&a);
 }
+
 int	*sorted_array(t_stack *a, int size)
 {
 	int		*sorted;
@@ -44,15 +45,24 @@ void	push_to_a(t_stack **a, t_stack **b)
 	}
 }
 
-void	push_to_b(t_stack **a, t_stack **b, int sort_min, int sort_max)
+void	push_to_b(t_stack **a, t_stack **b, int sorted_min, int sorted_max)
 {
-	pb(a, b);
-	if (*a && (*a)->data <= sort_min)
-		rb(b);
-	else if (*a && (*a)->data <= sort_max)
+	while (1)
 	{
-		if ((*b)->next && (*b)->data < (*b)->next->data)
-	 		sb(b);
+		if ((*a)->data <= sorted_min)
+		{
+			pb(a, b);
+			rb(b);
+			return ;
+		}
+		else if (*a && (*a)->data <= sorted_max)
+		{
+			pb(a, b);
+			if ((*b)->next && (*b)->data < (*b)->next->data)
+	 			sb(b);
+			return ;
+		}
+		ra(a);
 	}
 }
 
@@ -186,21 +196,21 @@ void	sort_big(t_stack **a, t_stack **b, int size, int chunk)
 // 			max++;
 // 		holder--;
 // 	}
-// 	t_stack *tmp = *sta;
-// 	printf("----\n");
-// 	while(tmp)
-// 	{
-// 		printf("%d\n", tmp->data);
-// 		tmp = tmp->next;
-// 	}
-// 	printf("----\n");
-// 	tmp = *stb;
-// 	while(tmp)
-// 	{
-// 		printf("%d\n", tmp->data);
-// 		tmp = tmp->next;
-// 	}
-// 	printf("----\n");
+// 	// t_stack *tmp = *sta;
+// 	// printf("----\n");
+// 	// while(tmp)
+// 	// {
+// 	// 	printf("%d\n", tmp->data);
+// 	// 	tmp = tmp->next;
+// 	// }
+// 	// printf("----\n");
+// 	// tmp = *stb;
+// 	// while(tmp)
+// 	// {
+// 	// 	printf("%d\n", tmp->data);
+// 	// 	tmp = tmp->next;
+// 	// }
+// 	// printf("----\n");
 // 	push_back_sta(sta, stb);
 // 	free(arr);
 // }
@@ -210,7 +220,7 @@ void	sorting(t_stack *a, t_stack *b, int size)
 	int	chunk;
 
 	if (size >= 100)
-		chunk = size / 13;
+		chunk = size / 12;
 	else
 		chunk = size / 6;
 	if (size == 2)
@@ -224,5 +234,5 @@ void	sorting(t_stack *a, t_stack *b, int size)
 		sort_small(&a, &b);
 	else
 		sort_big(&a, &b, size, chunk);
-		// chunks_sorting(&a, &b);
+	// chunks_sorting(&a, &b);
 }
