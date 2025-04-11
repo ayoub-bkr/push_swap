@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_swap_rrotate.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboukent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/11 09:57:01 by aboukent          #+#    #+#             */
+/*   Updated: 2025/04/11 09:57:03 by aboukent         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sa(t_stack **a)
@@ -36,9 +48,9 @@ void	rra(t_stack **a)
 
 	lst = *a;
 	sec = (*a)->next;
-	while(sec->next)
+	while (sec->next)
 		sec = sec->next;
-	while(lst)
+	while (lst)
 	{
 		tmp = lst->data;
 		lst->data = sec->data;
@@ -56,9 +68,9 @@ void	rrb(t_stack **b)
 
 	lst = *b;
 	sec = (*b)->next;
-	while(sec->next)
+	while (sec->next)
 		sec = sec->next;
-	while(lst)
+	while (lst)
 	{
 		tmp = lst->data;
 		lst->data = sec->data;
@@ -66,11 +78,4 @@ void	rrb(t_stack **b)
 		lst = lst->next;
 	}
 	write(1, "rrb\n", 4);
-}
-
-void	rrr(t_stack **a, t_stack **b)
-{
-	rra(a);
-	rrb(b);
-	write(1, "rrr\n", 4);
 }

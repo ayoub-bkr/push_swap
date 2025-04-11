@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboukent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/11 09:55:20 by aboukent          #+#    #+#             */
+/*   Updated: 2025/04/11 09:55:32 by aboukent         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	free_stack(t_stack **a)
 {
 	t_stack	*tmp;
+
 	if (!*a || !a)
 		return ;
 	tmp = *a;
@@ -16,12 +29,12 @@ void	free_stack(t_stack **a)
 
 void	free_strs(char **str)
 {
-	int i;
+	int	i;
 
 	if (!str || !*str)
 		return ;
 	i = 0;
-	while(str[i])
+	while (str[i])
 		free(str[i++]);
 	free(str);
 }
@@ -48,7 +61,7 @@ int	already_sorted(t_stack *a)
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int		i;
 	int		size;	
@@ -62,24 +75,6 @@ int main(int ac, char **av)
 	size = ft_lstsize(a);
 	if (ac >= 2 && !already_sorted(a))
 		sorting(a, b, size);
-
-	// t_stack *tmp = a;
-	// printf("----\n");
-	// i = 0;
-	// tmp = a;
-	// while(tmp)
-	// {
-	// 	printf("%d\n", tmp->data);
-	// 	tmp = tmp->next;
-	// }
-
-	// printf("----\n");
-	// tmp = b;
-	// while(tmp)
-	// {
-	// 	printf("%d\n", tmp->data);
-	// 	tmp = tmp->next;
-	// }
 	free_stack(&a);
 	free_stack(&b);
 }

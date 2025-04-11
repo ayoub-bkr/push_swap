@@ -1,12 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboukent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/11 09:56:10 by aboukent          #+#    #+#             */
+/*   Updated: 2025/04/11 09:56:11 by aboukent         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_isdigit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
-}
+#include "push_swap.h"
 
 int	check_input(char *str)
 {
@@ -14,9 +18,11 @@ int	check_input(char *str)
 	{
 		if ((*str == '+' || *str == '-') && !ft_isdigit(*(str + 1)))
 			return (0);
-		else if (ft_isdigit(*str) && (*(str + 1) != ' ' && *(str + 1) != '\0' && !ft_isdigit(*(str + 1))))
+		else if (ft_isdigit(*str) && (*(str + 1) != ' '
+				&& *(str + 1) != '\0' && !ft_isdigit(*(str + 1))))
 			return (0);
-		else if (!(*str == ' ' || ft_isdigit(*str) || *str == '+' || *str == '-'))
+		else if (!(*str == ' ' || ft_isdigit(*str)
+				|| *str == '+' || *str == '-'))
 			return (0);
 		str++;
 	}

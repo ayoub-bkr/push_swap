@@ -1,26 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboukent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/11 09:57:26 by aboukent          #+#    #+#             */
+/*   Updated: 2025/04/11 09:57:27 by aboukent         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static int words(char *str)
+int	ft_isdigit(char c)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13))
-	i++;
-	while (str[i])
-	{
-		while (str[i] == ' ' && str[i + 1] == ' ')
-			i++;
-		if (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13) || str[i + 1] == '\0')
-			count++;
-		i++;
-	}
-	return (count);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
 
-char *ft_substr(char *str, int start, int len)
+char	*ft_substr(char *str, int start, int len)
 {
 	int		i;
 	char	*m;
@@ -35,7 +35,28 @@ char *ft_substr(char *str, int start, int len)
 	return (m);
 }
 
-char **ft_split(char *str)
+static int	words(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13))
+		i++;
+	while (str[i])
+	{
+		while (str[i] == ' ' && str[i + 1] == ' ')
+			i++;
+		if (str[i] == ' '
+			|| (str[i] >= 7 && str[i] <= 13) || str[i + 1] == '\0')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+char	**ft_split(char *str)
 {
 	int		i;
 	int		len;
@@ -67,7 +88,7 @@ char **ft_split(char *str)
 long	ft_atoi(char *str)
 {
 	long	res;
-	int	sign;
+	int		sign;
 
 	res = 0;
 	sign = 1;
